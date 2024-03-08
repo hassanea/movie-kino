@@ -1,0 +1,594 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "The Godfather",
+      "year": 1972,
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "image": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UY1982_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Crime", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 2,
+      "name": "The Shawshank Redemption",
+      "year": 1994,
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1200_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 3,
+      "name": "The Dark Knight",
+      "year": 2008,
+      "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UY2048_.jpg",
+      "rating": { "film": "PG-13", "rating": 5 },
+      "genres": ["Action", "Crime", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 4,
+      "name": "The Big Lebowski",
+      "year": 1998,
+      "description": "Jeff 'The Dude' Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMzliZDk0NjctNjhlOC00MWEyLWI3OWYtNjA5ZDYxMTMzNTc5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_FMjpg_UX1017_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Comedy", "Crime"],
+      "inTheaters": false
+    },
+    {
+      "id": 5,
+      "name": "To Kill A Mocking Bird",
+      "year": 1962,
+      "description": "Atticus Finch, a widowed lawyer in Depression-era Alabama, defends a Black man against an undeserved rape charge, and tries to educate his young children against prejudice.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNmVmYzcwNzMtMWM1NS00MWIyLThlMDEtYzUwZDgzODE1NmE2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UX380_CR0,9,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 4 },
+      "genres": ["Drama", "Crime"],
+      "inTheaters": false
+    },
+    {
+      "id": 6,
+      "name": "True Grit",
+      "year": 1969,
+      "description": "A drunken, hard-nosed U.S. Marshal and a Texas Ranger help a stubborn teenager track down her father's murderer in Indian Territory.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjEwNzRlMzUtODIwMS00N2IwLWE1ZTgtODYzNWY0MGJhODY3XkEyXkFqcGdeQXVyMjI4MjA5MzA@._V1_QL75_UX380_CR0,9,380,562_.jpg",
+      "rating": { "film": "G", "rating": 4 },
+      "genres": ["Western", "Adventure", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 7,
+      "name": "The Lost Boys",
+      "year": 1987,
+      "description": "After moving to a new town, two brothers discover that the area is a haven for vampires.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMWEzNmUxZTMtZjY0My00OGNmLWIyNDctODM2YzZjM2YwZWEwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UY562_CR2,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Comedy", "Horror"],
+      "inTheaters": false
+    },
+    {
+      "id": 8,
+      "name": "Signs",
+      "year": 2002,
+      "description": "A widowed former reverend living with his children and brother on a Pennsylvania farm finds mysterious crop circles in their fields, which suggests something more frightening to come.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNDUwMDUyMDAyNF5BMl5BanBnXkFtZTYwMDQ3NzM3._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 3 },
+      "genres": ["Sci-Fi", "Mystery", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 9,
+      "name": "Saving Private Ryan",
+      "year": 1998,
+      "description": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWItZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["War", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 10,
+      "name": "The Conjuring",
+      "year": 2013,
+      "description": "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTM3NjA1NDMyMV5BMl5BanBnXkFtZTcwMDQzNDMzOQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Horror", "Mystery", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 11,
+      "name": "Toy Story",
+      "year": 1995,
+      "description": "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boy's bedroom.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+      "rating": { "film": "G", "rating": 4 },
+      "genres": ["Animation", "Comedy", "Adventure"],
+      "inTheaters": false
+    },
+    {
+      "id": 12,
+      "name": "Cinema Paradiso",
+      "year": 1988,
+      "description": "A filmmaker recalls his childhood when falling in love with the pictures at the cinema of his home village and forms a deep friendship with the cinema's projectionist.",
+      "image": "https://m.media-amazon.com/images/M/MV5BM2FhYjEyYmYtMDI1Yy00YTdlLWI2NWQtYmEzNzAxOGY1NjY2XkEyXkFqcGdeQXVyNTA3NTIyNDg@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 5 },
+      "genres": ["Drama", "Romance", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 13,
+      "name": "The Lives of Others",
+      "year": 2006,
+      "description": "In 1984 East Berlin, an agent of the secret police, conducting surveillance on a writer and his lover, finds himself becoming increasingly absorbed by their lives.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNmQyNmJjM2ItNTQzYi00ZjMxLWFjMDYtZjUyN2YwZDk5YWQ2XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,3,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Drama", "Mystery", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 14,
+      "name": "Grans Turismo",
+      "year": 2023,
+      "description": "Based on the unbelievable, inspiring true story of a team of underdogs - a struggling, working-class gamer, a failed former race car driver, and an idealistic motorsport exec - who risk it all to take on the most elite sport in the world.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTI1YjFmN2UtOWZhOC00MjkwLTg2ZjgtNDQ5NDQ3YWNmNGRkXkEyXkFqcGdeQXVyMTAxNzQ1NzI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Action", "Adventure", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 15,
+      "name": "Die Hard",
+      "year": 1988,
+      "description": "A New York City police officer tries to save his estranged wife and several others taken hostage by terrorists during a Christmas party at the Nakatomi Plaza in Los Angeles.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZjRlNDUxZjAtOGQ4OC00OTNlLTgxNmQtYTBmMDgwZmNmNjkxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Action", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 16,
+      "name": "Fright Night",
+      "year": 1985,
+      "description": "A teenager believes that the newcomer in his neighborhood is a vampire. He turns to an actor in a television horror show for help to deal with the undead.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjQzMTM4NzUyM15BMl5BanBnXkFtZTgwNDYyODgwNzE@._V1_QL75_UX380_CR0,8,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Horror", "Comedy"],
+      "inTheaters": false
+    },
+    {
+      "id": 17,
+      "name": "King Kong",
+      "year": 2005,
+      "description": "A greedy film producer assembles a team of moviemakers and sets out for the infamous Skull Island, where they find more than just cannibalistic natives.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjYxYmRlZWYtMzAwNC00MDA1LWJjNTItOTBjMzlhNGMzYzk3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Action", "Adventure", "Romance"],
+      "inTheaters": false
+    },
+    {
+      "id": 18,
+      "name": "The Patriot",
+      "year": 2000,
+      "description": "Peaceful farmer Benjamin Martin is driven to lead the Colonial Militia during the American Revolution when a sadistic British officer murders his son.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNjUxYzliZjUtZTcyZS00NjQ2LTkxZWMtMzg5OWUxZGZkODFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_QL75_UX380_CR0,2,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["History", "War", "Action", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 19,
+      "name": "Wild Hogs",
+      "year": 2007,
+      "description": "A group of suburban biker wannabes looking for adventure hit the open road, but get more than they bargained for when they encounter a New Mexico gang called the Del Fuegos.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZWZlMzQ5NmItNjBmMS00NDgyLThiNDYtZWU2MzA3YjZmOGU5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 3 },
+      "genres": ["Action", "Adventure", "Comedy"],
+      "inTheaters": false
+    },
+    {
+      "id": 20,
+      "name": "The Karate Kid",
+      "year": 1984,
+      "description": "A martial arts master agrees to teach karate to a bullied teenager.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNTkzY2YzNmYtY2ViMS00MThiLWFlYTEtOWQ1OTBiOGEwMTdhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,15,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 4 },
+      "genres": ["Action", "Drama", "Family"],
+      "inTheaters": false
+    },
+    {
+      "id": 21,
+      "name": "Jeeper Creepers",
+      "year": 2001,
+      "description": "A brother and sister driving home through isolated countryside for spring break encounter a flesh-eating creature which is in the midst of its ritualistic eating spree.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkwNDU0NTE0OV5BMl5BanBnXkFtZTgwNzAzNzQyMTI@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Horror", "Mystery"],
+      "inTheaters": false
+    },
+    {
+      "id": 22,
+      "name": "A Beautiful Mind",
+      "year": 2001,
+      "description": "A mathematical genius, John Nash made an astonishing discovery early in his career and stood on the brink of international acclaim. But the handsome and arrogant Nash soon found himself on a harrowing journey of self-discovery.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMzcwYWFkYzktZjAzNC00OGY1LWI4YTgtNzc5MzVjMDVmNjY0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 5 },
+      "genres": ["Biography", "Drama", "Mystery"],
+      "inTheaters": false
+    },
+    {
+      "id": 23,
+      "name": "Inglourious Basterds",
+      "year": 2009,
+      "description": "In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner's vengeful plans for the same.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["War", "Adventure", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 24,
+      "name": "Inception",
+      "year": 2010,
+      "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 5 },
+      "genres": ["Action", "Adventure", "Sci-Fi"],
+      "inTheaters": false
+    },
+    {
+      "id": 25,
+      "name": "Jurassic Park",
+      "year": 1993,
+      "description": "A pragmatic paleontologist touring an almost complete theme park on an island in Central America is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Action", "Adventure", "Sci-Fi"],
+      "inTheaters": false
+    },
+    {
+      "id": 26,
+      "name": "Nefarious",
+      "year": 2023,
+      "description": "On the day of his scheduled execution, a convicted serial killer gets a psychiatric evaluation during which he claims he is a demon, and further claims that before their time is over, the psychiatrist will commit three murders of his own.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNmY4NTlkNTEtNDBjMS00ZTJiLWFlZDMtNWY0MWFlZmNjMTFlXkEyXkFqcGdeQXVyMzQxODQzMTE@._V1_QL75_UX380_CR0,14,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Horror", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 27,
+      "name": "Van Helsing",
+      "year": 2004,
+      "description": "The famed monster hunter is sent to Transylvania to stop Count Dracula, who is using Dr. Frankenstein's research and a werewolf for nefarious purposes.",
+      "image": "https://m.media-amazon.com/images/M/MV5BODRmY2NhNDItOWViNi00OTIyLTk3YjYtYzY0YTFlMDg1YzQ0L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UY562_CR4,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Action", "Adventure", "Fantasy"],
+      "inTheaters": false
+    },
+    {
+      "id": 28,
+      "name": "Clerks",
+      "year": 1994,
+      "description": "A day in the lives of two convenience clerks named Dante and Randal as they annoy customers, discuss movies, and play hockey on the store roof.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNzE1Njk0NmItNDhlMC00ZmFlLWI4ZTUtYTY4ZjgzNjkyMTU1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Comedy"],
+      "inTheaters": false
+    },
+    {
+      "id": 29,
+      "name": "The Breakfast Club",
+      "year": 1985,
+      "description": "Five high school students meet in Saturday detention and discover how they have a great deal more in common than they thought.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTM5N2ZmZTMtNjlmOS00YzlkLTk3YjEtNTU1ZmQ5OTdhODZhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,16,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Comedy", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 30,
+      "name": "Fast Times at Ridgemont High",
+      "year": 1982,
+      "description": "A group of Southern California high school students are enjoying their most important subjects: sex, drugs and rock n' roll.",
+      "image": "https://m.media-amazon.com/images/M/MV5BYzBlZjE1MDctYjZmZC00ZTJmLWFkOWEtYjdmZDZkODBkZmI2XkEyXkFqcGdeQXVyNjQ2MjQ5NzM@._V1_QL75_UX380_CR0,5,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Comedy", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 31,
+      "name": "Young Frankenstein",
+      "year": 1974,
+      "description": "An American grandson of the infamous scientist, struggling to prove that his grandfather was not as insane as people believe, is invited to Transylvania, where he discovers the process that reanimates a dead body.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTEwNjg2MjM2ODFeQTJeQWpwZ15BbWU4MDQ1MDU5OTEx._V1_QL75_UX380_CR0,13,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 4 },
+      "genres": ["Comedy"],
+      "inTheaters": false
+    },
+    {
+      "id": 32,
+      "name": "Jaws",
+      "year": 1975,
+      "description": "When a killer shark unleashes chaos on a beach community off Cape Cod, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_QL75_UX380_CR0,10,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 4 },
+      "genres": ["Adventure", "Mystery", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 33,
+      "name": "Up in Smoke",
+      "year": 1978,
+      "description": "Two stoners unknowingly smuggle a van - made entirely of marijuana - from Mexico to L.A., with incompetent Sgt. Stedenko on their trail.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZGI0ZWVkNWQtNDMwNy00MTljLTk0ZGUtNmYxMjFhYmJmZTY2XkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_QL75_UX380_CR0,7,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Comedy", "Music"],
+      "inTheaters": false
+    },
+    {
+      "id": 34,
+      "name": "Gran Turino",
+      "year": 2008,
+      "description": "After a Hmong teenager tries to steal his prized 1972 Gran Torino, a disgruntled, prejudiced Korean War veteran seeks to redeem both the boy and himself.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTc5NTk2OTU1Nl5BMl5BanBnXkFtZTcwMDc3NjAwMg@@._V1_QL75_UY562_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 35,
+      "name": "First Blood",
+      "year": 1982,
+      "description": "A veteran Green Beret is forced by a cruel Sheriff and his deputies to flee into the mountains and wage an escalating one-man war against his pursuers.",
+      "image": "https://m.media-amazon.com/images/M/MV5BODBmOWU2YWMtZGUzZi00YzRhLWJjNDAtYTUwNWVkNDcyZmU5XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Action", "Adventure", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 36,
+      "name": "Legends of the Fall",
+      "year": 1994,
+      "description": "In the early 1900s, three brothers and their father living in the remote wilderness of Montana are affected by betrayal, history, love, nature, and war.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNzUwMzhkY2EtYzg4NC00NzZmLWEzNmItMDU4MmNlZTRjYzIxXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_QL75_UX380_CR0,1,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Drama", "Romance", "War"],
+      "inTheaters": false
+    },
+    {
+      "id": 37,
+      "name": "It",
+      "year": 2017,
+      "description": "In the summer of 1989, a group of bullied kids band together to destroy a shape-shifting monster, which disguises itself as a clown and preys on the children of Derry, their small Maine town.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZDVkZmI0YzAtNzdjYi00ZjhhLWE1ODEtMWMzMWMzNDA0NmQ4XkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Horror"],
+      "inTheaters": false
+    },
+    {
+      "id": 38,
+      "name": "My Dog Skip",
+      "year": 2000,
+      "description": "A shy boy grows up in 1940s Mississippi with the help of his beloved dog, Skip.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTc1NDgxMjg5MV5BMl5BanBnXkFtZTYwNTUxODc5._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 4 },
+      "genres": ["Comedy", "Drama", "Family"],
+      "inTheaters": false
+    },
+    {
+      "id": 39,
+      "name": "Bloodsport",
+      "year": 1988,
+      "description": "\"Bloodsport\" follows Frank Dux, an American martial artist serving in the military, who decides to leave the army to compete in a martial arts tournament in Hong Kong where fights to the death can occur.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNTJmMGEzMTQtMzQzMi00YjE1LWI4MTctNjY0NWZiYzE2MDVhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,15,380,562_.jpg",
+      "rating": { "film": "R", "rating": 4 },
+      "genres": ["Action", "Biography", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 40,
+      "name": "Pretty in Pink",
+      "year": 1986,
+      "description": "A poor girl must choose between the affections of dating her childhood sweetheart or a rich but sensitive playboy.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOGE3ZmVjMzMtMDcxNi00YjM5LTg3NjMtZWMxYjlhNTk2MmZjXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,15,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 3 },
+      "genres": ["Comedy", "Drama", "Romance"],
+      "inTheaters": false
+    },
+    {
+      "id": 41,
+      "name": "Ip Man",
+      "year": 2008,
+      "description": "During the Japanese invasion of China, a wealthy martial artist is forced to leave his home when his city is occupied. With little means of providing for themselves, Ip Man and the remaining members of the city must find a way to survive.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNTFmMjM3M2UtOTIyZC00Zjk3LTkzODUtYTdhNGRmNzFhYzcyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Action", "Biography", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 42,
+      "name": "A Beautiful Day in the Neighborhood",
+      "year": 2019,
+      "description": "Based on the true story of a real-life friendship between Fred Rogers and journalist Lloyd Vogel.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZWE3ZDYwNmItOWM5ZS00Y2Q4LTlhNmYtODlhY2QxYzA1MDlhXkEyXkFqcGdeQXVyNjA5MDIyMzU@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "PG", "rating": 4 },
+      "genres": ["Biography", "Drama", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 43,
+      "name": "The Mummy",
+      "year": 1999,
+      "description": "At an archaeological dig in the ancient city of Hamunaptra, an American serving in the French Foreign Legion accidentally awakens a mummy who begins to wreak havoc as he searches for the reincarnation of his long-lost love.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTJiYjBhZDgtMjhiOC00MTIzLThlNGMtMmI1NjIwM2M3YTI5XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX380_CR0,1,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Action", "Adventure", "Fantasy"],
+      "inTheaters": false
+    },
+    {
+      "id": 44,
+      "name": "Pirates of the Caribbean",
+      "year": 2003,
+      "description": "Blacksmith Will Turner teams up with eccentric pirate \"Captain\" Jack Sparrow to save his love, the governor's daughter, from Jack's former pirate allies, who are now undead.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNGYyZGM5MGMtYTY2Ni00M2Y1LWIzNjQtYWUzM2VlNGVhMDNhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Action", "Adventure", "Fantasy"],
+      "inTheaters": false
+    },
+    {
+      "id": 45,
+      "name": "The DownFall",
+      "year": 2004,
+      "description": "Traudl Junge, the final secretary for Adolf Hitler, tells of the Nazi dictator's final days in his Berlin bunker at the end of WWII.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTU0NTU5NTAyMl5BMl5BanBnXkFtZTYwNzYwMDg2._V1_QL75_UY562_CR2,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Biography", "Drama", "History", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 46,
+      "name": "Tracks",
+      "year": 2013,
+      "description": "A young woman goes on a 1,700-mile trek across the deserts of West Australia with four camels and her faithful dog.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTkyMjIzOTQ4MV5BMl5BanBnXkFtZTgwOTkzMDM1MTE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Adventure", "Biography", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 47,
+      "name": "The Return",
+      "year": 2003,
+      "description": "In the Russian wilderness, two brothers face a range of new, conflicting emotions when their father - a man they know only through a single photograph - resurfaces.",
+      "image": "https://m.media-amazon.com/images/M/MV5BODI1YTAzZmQtYjg5Ny00ODc1LTgxYTEtOWRlYmYzNzAwMDY5XkEyXkFqcGdeQXVyNzMzMjU5NDY@._V1_QL75_UY562_CR9,0,380,562_.jpg",
+      "rating": { "film": "NR", "rating": 4 },
+      "genres": ["Drama", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 48,
+      "name": "The King's Speech",
+      "year": 2010,
+      "description": "The story of King George VI, his unexpected ascension to the throne of the British Empire in 1936, and the speech therapist who helped the unsure monarch overcome his stammer.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMzU5MjEwMTg2Nl5BMl5BanBnXkFtZTcwNzM3MTYxNA@@._V1_QL75_UY562_CR2,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Biography", "Drama", "History"],
+      "inTheaters": false
+    },
+    {
+      "id": 49,
+      "name": "Immortal Beloved",
+      "year": 1994,
+      "description": "The life and death of the legendary Ludwig van Beethoven. Besides all the work he is known for, the composer once wrote a famous love letter to a nameless beloved, and the movie tries to find out who this beloved was--not easy, as Beethoven has had many women in his life.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOTgyZTYzZGItYzIzMi00YTBkLTk0ZTktOTg2ZTM3NDcwYjAxXkEyXkFqcGdeQXVyNzc5MjA3OA@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Biography", "Drama", "History"],
+      "inTheaters": false
+    },
+    {
+      "id": 50,
+      "name": "Mrs. Doubtfire",
+      "year": 1993,
+      "description": "After a bitter divorce, an actor disguises himself as a female housekeeper to spend time with his children held in custody by his former wife.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZjc3YzdkYjEtYzY2My00YTRlLTg4Y2YtNmY5OGEwZTFlZmY2XkEyXkFqcGdeQXVyOTYyMTY2NzQ@._V1_QL75_UX380_CR0,3,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Comedy", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 51,
+      "name": "The Last of the Mohicans",
+      "year": 1992,
+      "description": "Three trappers protect the daughters of a British Colonel in the midst of the French and Indian War.",
+      "image": "https://m.media-amazon.com/images/M/MV5BZDNiYmRkNDYtOWU1NC00NmMxLWFkNmUtMGI5NTJjOTJmYTM5XkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Action", "Adventure", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 52,
+      "name": "Forgotten Love",
+      "year": 2023,
+      "description": "A once-respected surgeon professor Rafal Wilczur who's lost his family and his memory gets a chance at redemption when he reconnects with someone from his forgotten past who can help him find the answers he needs.",
+      "image": "https://m.media-amazon.com/images/M/MV5BYWMyNTQxMDQtZDVjZi00MjlkLWJiMDktNWViODQ0OGQ2NmFhXkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "NC-17", "rating": 5 },
+      "genres": ["Drama", "Romance", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 53,
+      "name": "Ida",
+      "year": 2013,
+      "description": "A novice nun about to take her vows uncovers a family secret dating back to the German occupation.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNjk3NDkzMzMtMGM3MS00YmJkLTkwNmMtZjU5ZWIyNTkzMjJkXkEyXkFqcGdeQXVyMTAwMzUyOTc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 4 },
+      "genres": ["Drama", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 54,
+      "name": "Pan's Labyrinth",
+      "year": 2006,
+      "description": "In the Falangist Spain of 1944, the bookish young stepdaughter of a sadistic army officer escapes into an eerie but captivating fantasy world.",
+      "image": "https://m.media-amazon.com/images/M/MV5BYzFjMThiMGItOWRlMC00MDI4LThmOGUtYTNlZGZiYWI1YjMyXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX380_CR0,2,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Drama", "Fantasy", "War", "Foreign"],
+      "inTheaters": false
+    },
+    {
+      "id": 55,
+      "name": "The Strangers",
+      "year": 2008,
+      "description": "A young couple staying in an isolated vacation home are terrorized by three unknown assailants.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTkxODAyODMwNV5BMl5BanBnXkFtZTcwNzk5Nzk2MQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 3 },
+      "genres": ["Horror", "Mystery", "Thriller"],
+      "inTheaters": false
+    },
+    {
+      "id": 56,
+      "name": "The Way Back",
+      "year": 2010,
+      "description": "Siberian gulag escapees travel four thousand miles by foot to freedom in India.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTg5MTc5MTM3Ml5BMl5BanBnXkFtZTcwMDI2NzgwNA@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "PG-13", "rating": 5 },
+      "genres": ["Adventure", "Drama", "History"],
+      "inTheaters": false
+    },
+    {
+      "id": 57,
+      "name": "The Crow",
+      "year": 1994,
+      "description": "A man brutally murdered comes back to life as an undead avenger of his and his fiancée's murder.",
+      "image": "https://m.media-amazon.com/images/M/MV5BOGIxYmFiMzQtZDQwMC00ZTAxLWIzZTQtOTM5MzJkZmJjZTJhXkEyXkFqcGdeQXVyMTUyNjc3NDQ4._V1_QL75_UX380_CR0,4,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Action", "Crime", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 58,
+      "name": "300",
+      "year": 2006,
+      "description": "In the ancient battle of Thermopylae, King Leonidas and 300 Spartans fight against Xerxes and his massive Persian army. They face insurmountable odds when they are betrayed by a Spartan reject.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjc4OTc0ODgwNV5BMl5BanBnXkFtZTcwNjM1ODE0MQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": ["Action", "Drama"],
+      "inTheaters": false
+    },
+    {
+      "id": 58,
+      "name": "300",
+      "year": 2006,
+      "description": "In the ancient battle of Thermopylae, King Leonidas and 300 Spartans fight against Xerxes and his massive Persian army. They face insurmountable odds when they are betrayed by a Spartan reject.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMjc4OTc0ODgwNV5BMl5BanBnXkFtZTcwNjM1ODE0MQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+      "rating": { "film": "R", "rating": 5 },
+      "genres": [],
+      "inTheaters": false
+    }
+  ]
+}
