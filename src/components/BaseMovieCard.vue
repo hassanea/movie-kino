@@ -1,61 +1,151 @@
 <template>
-  <article class="movie">
-    <div class="movie-header">
-      <img
-        :src="`${imageSource}${movie.image}`"
+  <!-- px-5 pb-0  first:pt-6 last:pb-0 md:px-6 md:first:pt-0 md:last:pb-0 lg:mx-2 lg:my-3 lg:p-4 -->
+  <article
+    class="relative mb-0 mt-6 grid h-full grid-cols-1 px-5 text-center md:mt-3 md:px-4"
+  >
+    <div
+      class="h-full w-full rounded-xl bg-[#cf93a573] mix-blend-normal lg:mix-blend-hard-light"
+    >
+      <IKImage
+        :urlEndpoint="imageSource"
+        :path="`${movieImagePath}${movie.image}`"
         :alt="movie.name"
-        class="movie-img"
+        width="320"
+        height="480"
+        :transformation="[{ format: 'avif' }, 'n-movie-image']"
+        loading="lazy"
+        class="movie-img relative mx-auto my-0 block h-[30rem] max-w-full object-cover"
       />
-      <StarIcon
-        class="w-11 h-11 absolute top-6 translate-x-1 translate-y-1 right-6 inline-block"
-        :class="starRatingClasses"
-      />
-      <span
-        class="font-extrabold text-gray-600 absolute top-9 right-10 translate-x-1 translate-y-1 text-center"
-        :class="ratingOutputClasses"
-      >
-        {{ ratingOutput }}
-      </span>
     </div>
-    <div class="movie-content">
-      <h2 class="movie-title">{{ movie.name }}</h2>
-      <p>{{ movie.year }}</p>
 
-      <div class="movie-badge-grid">
+    <base-star :rating="movie.rating" variant="listing"></base-star>
+
+    <div
+      class="movie-card-bg mx-auto mb-14 mt-0 h-full max-h-[92%] min-h-[80%] w-full rounded-[20px] p-3 md:mb-12 md:p-4"
+    >
+      <h2
+        class="mx-auto my-3 line-clamp-2 text-center font-serif text-[1.75rem] font-bold italic leading-normal tracking-[0.12rem] md:my-4 md:text-3xl md:tracking-[0.2rem]"
+      >
+        {{ movie.name }}
+      </h2>
+
+      <p
+        class="mb-2 font-serif text-xl font-bold italic leading-normal tracking-widest"
+      >
+        {{ movie.year }}
+        <span class="ml-1 mr-1 border-2 border-solid border-r-black"></span>
+
+        <span class="m-3 font-serif text-xl font-bold italic leading-normal">
+          {{ movie.filmRating }}
+        </span>
+      </p>
+
+      <div
+        class="mx-0 my-2 flex h-auto w-full flex-1 flex-row flex-wrap items-center justify-center md:my-[0.625rem]"
+      >
         <base-movie-badge
           v-for="genre in movieGenres"
           :key="genre"
           :genre="genre"
-        ></base-movie-badge>
+        />
       </div>
-      <p class="movie-description">
+      <p
+        class="mx-0 mb-[1.25rem] text-pretty font-sans text-lg font-normal not-italic leading-loose md:mb-5 md:mt-3"
+      >
         {{ movie.description }}
       </p>
-      <p>
-        <a
-          :href="`${trailerSource}${movie.trailer}`"
-          target="_blank"
-          rel="noopener noreferrer"
-          >{{ `Watch ${movie.name}'s trailer!` }}</a
-        >
+      <p class="my-2 font-serif text-lg font-bold not-italic leading-normal">
+        In Theaters?: {{ inTheatersOutput }}
       </p>
-      <p class="in-theaters">In Theaters?: {{ inTheatersOutput }}</p>
-      <base-movie-rating
-        :rating="movie.rating"
-        :film="movie.filmRating"
-      ></base-movie-rating>
-      <button type="button" @click="addToWatchList(movie.id)">Favorite</button>
-      <button type="button" @click="editMovie(movie.id)">Edit</button>
-      <button type="button" @click="deleteMovie(movie.id)">Delete</button>
+      <base-rating
+        v-model="selectedRating"
+        @update:modelValue="handleRating(movie.id, selectedRating)"
+      />
+      <div
+        class="my-3 flex h-auto w-full flex-1 flex-row flex-wrap items-center justify-center md:my-4"
+      >
+        <base-button
+          label="Add to watchlist"
+          variant="icon"
+          @click="addToWatchList(movie.id)"
+          @keydown.enter="addToWatchList(movie.id)"
+          v-tooltip="'Add to Watchlist'"
+        >
+          <template #default>
+            <HeartIcon
+              class="inline-block h-6 w-6 fill-current align-middle text-red-500"
+            />
+          </template>
+        </base-button>
+
+        <base-button
+          label="Edit Movie"
+          variant="icon"
+          @click="editMovie(movie.id)"
+          @keydown.enter="editMovie(movie.id)"
+          v-tooltip="'Edit Movie'"
+        >
+          <template #default>
+            <PencilSquareIcon
+              class="inline-block h-6 w-6 fill-yellow-200 align-middle text-black"
+            />
+          </template>
+        </base-button>
+
+        <base-button
+          label="Delete Movie"
+          variant="icon"
+          @click="deleteMovie(movie.id)"
+          @keydown.enter="deleteMovie(movie.id)"
+          v-tooltip="'Delete Movie'"
+        >
+          <template #default>
+            <TrashIcon
+              class="inline-block h-6 w-6 fill-black align-middle text-red-700"
+            />
+          </template>
+        </base-button>
+
+        <base-button
+          label="Watch Movie Trailer"
+          variant="icon"
+          @click="handleShowMovieTrailer(movie.id)"
+          @keydown.enter="handleShowMovieTrailer(movie.id)"
+          v-tooltip="'Watch Trailer'"
+        >
+          <template #default>
+            <TvIcon class="inline-block h-6 w-6 align-middle" />
+          </template>
+        </base-button>
+      </div>
+
+      <router-link :to="currentMoviePage" class="btn">
+        <span class="mr-3 inline-block text-center align-middle">
+          <EyeIcon
+            class="inline-block h-6 w-6 fill-blue-700 align-middle text-light"
+          /> </span
+        >View Movie
+      </router-link>
     </div>
   </article>
 </template>
 
 <script setup>
-import { toRefs, computed } from "vue";
-import BaseMovieBadge from "./BaseMovieBadge.vue";
-import BaseMovieRating from "./BaseMovieRating.vue";
-import { StarIcon } from "@heroicons/vue/24/solid";
+import { ref, toRefs, computed } from 'vue';
+import BaseMovieBadge from './BaseMovieBadge.vue';
+import BaseButton from './BaseButton.vue';
+import { IKImage } from 'imagekitio-vue';
+import { TvIcon } from '@heroicons/vue/24/solid';
+import BaseRating from './BaseRating.vue';
+import BaseStar from './BaseStar.vue';
+
+import {
+  EyeIcon,
+  HeartIcon,
+  PencilSquareIcon,
+  TrashIcon,
+} from '@heroicons/vue/24/outline';
+
 const props = defineProps({
   movie: {
     type: Object,
@@ -65,106 +155,65 @@ const props = defineProps({
 
 const { movie } = toRefs(props);
 
-const emit = defineEmits(["add-to-watchlist", "edit-movie", "delete-movie"]);
+const emit = defineEmits([
+  'addToWatchlist',
+  'editMovie',
+  'deleteMovie',
+  'showTrailer',
+  'updateRating',
+]);
+
+const selectedRating = ref(movie.value.rating);
 
 const imageSource = import.meta.env.VITE_APP_IMAGE_ENDPOINT;
-const trailerSource = "https://www.youtube.com/watch?v=";
 
-const starRatingClasses = computed(() => {
-  return [
-    { "text-yellow-400": movie.value.rating },
-    { "text-gray-600": !movie.value.rating },
-  ];
-});
+const movieImagePath = import.meta.env.VITE_APP_IMAGE_PATH;
 
-const addToWatchList = (movieId) => {
-  emit("add-to-watchlist", movieId);
+const addToWatchList = movieId => {
+  emit('addToWatchList', movieId);
 };
 
-const editMovie = (movieId) => {
-  console.log(`Editing movie #${movieId}`);
-  emit("edit-movie", movieId);
+const handleRating = (movieId, rating) => {
+  const updatedRating = { id: movieId, rating: rating };
+  emit('updateRating', updatedRating);
 };
 
-const deleteMovie = (movieId) => {
-  emit("delete-movie");
-  console.log(`Deleting movie #${movieId}`);
+const handleShowMovieTrailer = movieId => {
+  emit('showTrailer', movieId);
+};
+
+const editMovie = movieId => {
+  emit('editMovie', movieId);
+};
+
+const deleteMovie = movieId => {
+  emit('deleteMovie', movieId);
 };
 
 const movieGenres = computed(() => {
-  return movie.value.genres.split(", ");
+  return movie.value.genres.split(', ');
 });
 
 const inTheatersOutput = computed(() => {
-  return movie.value.inTheaters ? "Currently In Theaters" : "No";
+  return movie.value.inTheaters ? 'Currently In Theaters' : 'No';
 });
 
-const ratingOutput = computed(() => {
-  return movie.value.rating ? movie.value.rating : "-";
-});
-
-const ratingOutputClasses = computed(() => {
-  return { "text-white": !movie.value.rating };
+const currentMoviePage = computed(() => {
+  return `/movies/${movie.value.id}`;
 });
 </script>
 
-<style lang="scss" scoped>
-.movie {
-  position: relative;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-self: center;
-  text-align: center;
-  flex: 1 1 30%;
-  padding: 1rem;
-  margin: 2rem 0.75rem;
-  overflow: auto;
+<style>
+.movie-card-bg {
+  background: linear-gradient(-226deg, #7198af 20%, #93a5cf 80%);
+  filter: drop-shadow(0 0 3px #a0a0ad);
 }
+</style>
 
-.movie-header {
-  text-align: center;
-  width: 100%;
-  height: 100%;
-}
-
+<style scoped>
 .movie-img {
-  position: relative;
-  bottom: -12px;
+  bottom: -8%;
   left: 0;
-  display: block;
-  max-width: 100%;
-  height: 30rem;
-  margin: 0 auto;
-  border-radius: 10px;
-  object-fit: cover;
-  cursor: pointer;
-}
-
-.movie-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  background: #eeedef;
-  border-radius: 20px;
-  padding: 1.75rem;
-  margin: 0.75rem auto;
-}
-
-.movie-title {
-  font:
-    normal bolder 2rem / 1.5 "Lora",
-    serif;
-  letter-spacing: 0.2rem;
-  margin-bottom: 0.8rem;
-}
-
-.movie-badge-grid {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 5%;
 }
 </style>

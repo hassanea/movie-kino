@@ -1,0 +1,29 @@
+{
+  "genres": [
+    "Action",
+    "Adventure",
+    "Animation",
+    "Biography",
+    "Bollywood",
+    "Comedy",
+    "Crime",
+    "Documentary",
+    "Drama",
+    "Family",
+    "Fantasy",
+    "Foreign",
+    "History",
+    "Horror",
+    "Music",
+    "Mystery",
+    "Romance",
+    "Sci-Fi",
+    "Short",
+    "Silent",
+    "Sport",
+    "Thriller",
+    "War",
+    "Western"
+  ],
+  "filmRatings": ["G", "PG", "PG-13", "R", "NR", "NC-17"]
+}

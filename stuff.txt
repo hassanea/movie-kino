@@ -1,0 +1,34 @@
+// const navItems = [
+//   {
+//     id: "qwa",
+//     name: "Qwant",
+//     to: "https://www.qwant.com",
+//   },
+//   {
+//     id: "eco",
+//     name: "Ecosia",
+//     to: "https://www.ecosia.org",
+//   },
+//   {
+//     id: "goo",
+//     name: "Google",
+//     to: "https://www.google.com",
+//   },
+// ];
+
+
+.btn-trivia-goofs {
+  position: absolute;
+  top: 2.5%;
+  right: -2%;
+}
+
+.btn-trivia-goofs span::before {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  vertical-align: middle;
+  filter: invert(16%) sepia(68%) saturate(1382%) hue-rotate(334deg)
+    brightness(99%) contrast(96%);
+  content: url("../../assets/masks-theater-solid.svg");
+}

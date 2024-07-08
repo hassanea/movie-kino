@@ -579,16 +579,6 @@
       "rating": { "film": "R", "rating": 5 },
       "genres": ["Action", "Drama"],
       "inTheaters": false
-    },
-    {
-      "id": 58,
-      "name": "300",
-      "year": 2006,
-      "description": "In the ancient battle of Thermopylae, King Leonidas and 300 Spartans fight against Xerxes and his massive Persian army. They face insurmountable odds when they are betrayed by a Spartan reject.",
-      "image": "https://m.media-amazon.com/images/M/MV5BMjc4OTc0ODgwNV5BMl5BanBnXkFtZTcwNjM1ODE0MQ@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
-      "rating": { "film": "R", "rating": 5 },
-      "genres": [],
-      "inTheaters": false
     }
   ]
 }

@@ -1,12 +1,13 @@
 <template>
   <button
     type="button"
+    class="inline-block w-auto h-12 cursor-pointer border-none bg-transparent"
     @click="handleRatingSelection(1)"
     @mouseenter="handleRatingSelection(1)"
     :disabled="modelValue.includes(1) && isDisabled"
   >
     <StarIcon
-      class="w-6 h-6 mr-1 inline-block text-gray-600"
+      class="w-6 h-6 mr-1 inline-block align-middle text-gray-600"
       :class="{
         'text-yellow-400 opacity-95': modelValue.includes(1),
         'cursor-not-allowed opacity-80': modelValue.includes(1) && isDisabled,
@@ -16,12 +17,13 @@
 
   <button
     type="button"
+    class="inline-block w-auto h-12 cursor-pointer border-none bg-transparent"
     @click="handleRatingSelection(1, 2)"
     @mouseenter="handleRatingSelection(1, 2)"
     :disabled="modelValue.includes(2) && isDisabled"
   >
     <StarIcon
-      class="w-6 h-6 mr-1 inline-block text-gray-600"
+      class="w-6 h-6 mr-1 inline-block align-middle text-gray-600"
       :class="{
         'text-yellow-400 opacity-95': modelValue.includes(2),
         'cursor-not-allowed opacity-80': modelValue.includes(2) && isDisabled,
@@ -31,12 +33,13 @@
 
   <button
     type="button"
+    class="inline-block w-auto h-12 cursor-pointer border-none bg-transparent"
     @click="handleRatingSelection(1, 2, 3)"
     @mouseenter="handleRatingSelection(1, 2, 3)"
     :disabled="modelValue.includes(3) && isDisabled"
   >
     <StarIcon
-      class="w-6 h-6 mr-1 inline-block text-gray-600"
+      class="w-6 h-6 mr-1 inline-block align-middle text-gray-600"
       :class="{
         'text-yellow-400 opacity-95': modelValue.includes(3),
         'cursor-not-allowed opacity-80': modelValue.includes(3) && isDisabled,
@@ -46,12 +49,13 @@
 
   <button
     type="button"
+    class="inline-block w-auto h-12 cursor-pointer border-none bg-transparent"
     @click="handleRatingSelection(1, 2, 3, 4)"
     @mouseenter="handleRatingSelection(1, 2, 3, 4)"
     :disabled="modelValue.includes(4) && isDisabled"
   >
     <StarIcon
-      class="w-6 h-6 mr-1 inline-block text-gray-600"
+      class="w-6 h-6 mr-1 inline-block align-middle text-gray-600"
       :class="{
         'text-yellow-400 opacity-95': modelValue.includes(4),
         'cursor-not-allowed opacity-80': modelValue.includes(4) && isDisabled,
@@ -61,12 +65,13 @@
 
   <button
     type="button"
+    class="inline-block w-auto h-12 cursor-pointer border-none bg-transparent"
     @click="handleRatingSelection(1, 2, 3, 4, 5)"
     @mouseenter="handleRatingSelection(1, 2, 3, 4, 5)"
     :disabled="modelValue.includes(5) && isDisabled"
   >
     <StarIcon
-      class="w-6 h-6 mr-1 inline-block text-gray-600"
+      class="w-6 h-6 mr-1 inline-block align-middle text-gray-600"
       :class="{
         'text-yellow-400 opacity-95': modelValue.includes(5),
         'cursor-not-allowed opacity-80': modelValue.includes(5) && isDisabled,
@@ -106,19 +111,3 @@ const handleRatingSelection = (...items) => {
   }
 };
 </script>
-
-<style scoped>
-.btn-star-rating {
-  width: 3rem;
-  height: 3rem;
-  border: 3px solid #a0a3ea;
-  border-radius: 12px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.btn-star-rating:disabled {
-  cursor: not-allowed;
-  opacity: 0.8;
-}
-</style>
