@@ -36,6 +36,7 @@ const buttonClasses = computed(() => {
     'circular-btn': variant.value === 'circular',
     'pill-btn': variant.value === 'pill',
     'close-btn': variant.value === 'close',
+    'form-btn': variant.value === 'form',
   };
 });
 </script>
@@ -61,5 +62,9 @@ const buttonClasses = computed(() => {
 
 .close-btn {
   @apply absolute right-0 top-1 inline-block h-12 w-12 cursor-pointer border-none bg-transparent text-2xl font-bold focus:rounded-full focus:border-2 focus:border-solid focus:border-indigo-800 focus:outline-none;
+}
+
+.form-btn {
+  @apply inline-block rounded-lg p-3 text-xl font-bold transition-colors;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="pt-20">
     <header class="h-full w-full">
-      <base-navbar :logo :nav-links label="Main navigation"> </base-navbar>
+      <base-navbar :logo :nav-links label="Main navigation" />
     </header>
     <main class="min-h-full w-full">
       <router-view></router-view>

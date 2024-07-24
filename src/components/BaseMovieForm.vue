@@ -1,31 +1,38 @@
 <template>
   <form
-    class="overflow-y-scroll"
+    class="h-auto w-full"
     @submit.prevent="handleEditMovie"
     v-if="modelValue"
   >
-    <div class="form-control">
-      <label for="movieName"
+    <div class="my-2 md:my-3">
+      <label
+        for="updatedMovieName"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Name:
         <input
           type="text"
-          id="movieName"
+          id="updatedMovieName"
           v-model.trim="updatedMovie.name"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
           :class="{
-            'bg-red-600 text-black': isInvalidForm && updatedMovie.name === '',
+            'bg-red-900 text-light placeholder:text-white':
+              isInvalidForm && updatedMovie.name === '',
           }"
           placeholder="Enter a Movie Name..."
         />
       </label>
     </div>
-    <div class="form-control">
-      <label for="movieDesc"
+    <div class="my-2 md:my-3">
+      <label
+        for="updatedMovieDesc"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Description:
         <textarea
-          id="movieDesc"
+          id="updatedmMovieDesc"
           v-model.trim="updatedMovie.description"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
           :class="{
-            'bg-red-600 text-black':
+            'bg-red-900 text-light placeholder:text-white':
               isInvalidForm && updatedMovie.description === '',
           }"
           placeholder="Enter a Movie Description..."
@@ -33,31 +40,48 @@
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieYear"
+    <div class="my-3">
+      <label
+        for="updatedMovieYear"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Release Year:
-        <input type="text" v-model.number="updatedMovie.year" id="movieYear" />
+        <input
+          type="text"
+          v-model.number="updatedMovie.year"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
+          id="updatedMovieYear"
+        />
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieImage"
+    <div class="my-3">
+      <label
+        for="updatedMovieImage"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Image:
         <input
           type="text"
           v-model.trim="updatedMovie.image"
-          id="movieImage"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
+          id="updatedMovieImage"
           placeholder="Enter a Movie Image"
           :class="{
-            'bg-red-600 text-black': isInvalidForm && !isUpdateMovieImageValid,
+            'bg-red-900 text-light placeholder:text-white':
+              isInvalidForm && !isUpdateMovieImageValid,
           }"
         />
       </label>
     </div>
-    <div class="form-control">
-      <label for="movieFilmRating"
+    <div class="my-3">
+      <label
+        for="updatedMovieFilmRating"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Film Rating:
-        <select id="movieFilmRating" v-model="updatedMovie.filmRating">
+        <select
+          id="updatedMovieFilmRating"
+          v-model="updatedMovie.filmRating"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
+        >
           <option value="" disabled="true">
             Please choose a movie film rating!
           </option>
@@ -73,88 +97,135 @@
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieTrailer"
+    <div class="my-3">
+      <label
+        for="updatedMovieTrailer"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Trailer ID:
-        <input type="text" id="movieTrailer" v-model="updatedMovie.trailer" />
+        <input
+          type="text"
+          id="updatedMovieTrailer"
+          v-model="updatedMovie.trailer"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
+        />
       </label>
     </div>
 
-    <div class="form-actions">
-      <button type="submit">Update Movie</button>
-      <button
-        type="button"
-        @click="handleCancelForm"
-        @keydown.enter="handleCancelForm"
-        @keydown.space="handleCancelForm"
+    <div
+      class="mb-2 mt-6 flex h-auto w-full flex-nowrap justify-center gap-x-4"
+    >
+      <div class="mr-auto flex h-auto w-full justify-start">
+        <base-button
+          type="submit"
+          @keydown.enter="handleEditMovie"
+          variant="form"
+          label="Update movie"
+          class="flex-1 basis-1/2 bg-violet-950 text-light hover:bg-light hover:text-violet-950"
+        >
+          <template #default> Update </template>
+        </base-button>
+      </div>
+      <div class="ml-auto flex h-auto w-full justify-end">
+        <base-button
+          variant="form"
+          label="Cancel"
+          @click="handleCancelEditForm"
+          @keydown.enter="handleCancelEditForm"
+          class="flex-1 basis-1/2 bg-pink-800 text-light hover:bg-light hover:text-pink-800"
+        >
+          <template #default> Cancel </template>
+        </base-button>
+      </div>
+    </div>
+    <div class="my-4 flex flex-row items-center justify-center text-center">
+      <p
+        class="rounded-md bg-pink-900 p-2 text-xl font-bold text-light"
+        v-if="isInvalidForm"
       >
-        Cancel
-      </button>
+        Invalid Form!!
+      </p>
     </div>
   </form>
-  <form
-    class="h-full w-full overflow-y-auto"
-    @submit.prevent="handleAddMovie"
-    v-else
-  >
-    <div class="mx-auto my-4 block h-auto w-full">
+  <form class="h-auto w-full" @submit.prevent="handleAddMovie" v-else>
+    <div class="my-2 md:my-3">
       <label
         for="movieName"
-        class="block text-center font-serif text-lg font-bold italic leading-normal"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Name:
       </label>
       <input
         type="text"
         id="movieName"
         v-model.trim="movie.name"
-        class="mx-auto flex flex-row items-center justify-center rounded-md p-3 caret-blue-1000 placeholder:font-medium"
+        class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
         :class="{
-          'bg-red-600 text-dark': isInvalidForm && movie.name === '',
+          'bg-red-900 text-light placeholder:text-white':
+            isInvalidForm && movie.name === '',
         }"
         placeholder="Enter a Movie Name..."
       />
     </div>
-    <div class="mx-auto my-4 flex flex-row items-center justify-center">
-      <label for="movieDesc"
+    <div class="my-2 md:my-3">
+      <label
+        for="movieDesc"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Description:
         <textarea
           id="movieDesc"
           v-model.trim="movie.description"
-          class="rounded-md p-3 placeholder:font-medium"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
           :class="{
-            'bg-red-600 text-dark': isInvalidForm && movie.description === '',
+            'bg-red-900 text-light placeholder:text-white':
+              isInvalidForm && movie.description === '',
           }"
           placeholder="Enter a Movie Description..."
         ></textarea>
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieYear"
+    <div class="my-2 md:my-3">
+      <label
+        for="movieYear"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Release Year:
-        <input type="text" v-model.number="movie.year" id="movieYear" />
+        <input
+          type="text"
+          v-model.number="movie.year"
+          id="movieYear"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
+        />
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieImage"
+    <div class="my-2 md:my-3">
+      <label
+        for="movieImage"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Image:
         <input
           type="text"
           id="movieImage"
           placeholder="Enter a Movie Image"
           v-model.trim="movie.image"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
           :class="{
-            'bg-red-600 text-black': isInvalidForm && !isMovieImageValid,
+            'bg-red-900 text-light placeholder:text-white':
+              isInvalidForm && !isMovieImageValid,
           }"
         />
       </label>
     </div>
-    <div class="form-control">
-      <label for="movieFilmRating"
+    <div class="my-2 md:my-3">
+      <label
+        for="movieFilmRating"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Film Rating:
-        <select id="movieFilmRating" v-model="movie.filmRating">
-          <option value="" disabled="true">
+        <select
+          id="movieFilmRating"
+          v-model="movie.filmRating"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
+        >
+          <option value="" disabled="true" class="placeholder:text-light">
             Please choose a movie film rating!
           </option>
           <option
@@ -168,34 +239,36 @@
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieTrailer"
-        >Movie Trailer ID:
-        <input
-          type="text"
-          id="movieTrailer"
-          placeholder="Enter a Movie Trailer"
-          v-model="movie.trailer"
-        />
-      </label>
-    </div>
-
-    <div class="form-control">
+    <div class="my-2 md:my-3">
       <base-rating v-model="movie.rating"></base-rating>
     </div>
 
-    <div class="form-control">
-      <label for="movieGenres"
+    <div class="my-2 md:my-3">
+      <label
+        for="movieGenres"
+        class="block font-sans text-lg font-semibold leading-normal"
         >Movie Genres:
         <select
           id="movieGenres"
           v-model="movieGenres"
+          class="focus:blue-1000 mx-auto mt-1 block h-auto w-[90%] rounded-md p-3 font-medium text-dark caret-blue-1000 placeholder:font-medium placeholder:text-dark md:mt-3"
           :class="{
-            'bg-red-600 text-black': isInvalidForm && movieGenres.length === 0,
+            'bg-red-900 text-light placeholder:text-white':
+              isInvalidForm && movieGenres.length === 0,
           }"
           multiple
         >
-          <option value="" disabled="true">Please choose a movie genre!</option>
+          <option
+            value=""
+            disabled="true"
+            class="font-bold text-dark placeholder-dark"
+            :class="{
+              'bg-red-900 text-light placeholder:text-white':
+                isInvalidForm && movieGenres.length === 0,
+            }"
+          >
+            Please choose a movie genre!
+          </option>
           <option
             v-for="movieGenre in movieGenreList"
             :key="movieGenre"
@@ -207,41 +280,33 @@
       </label>
     </div>
 
-    <div class="form-control">
-      <label for="movieInTheaters"
-        >In Theaters?:
-        <input
-          type="checkbox"
-          id="movieInTheaters"
-          class="rounded-md p-[0.625rem] text-slate-600 accent-slate-600 focus:border-4 focus:border-solid focus:border-blue-1000"
-          v-model="movie.inTheaters"
-        />
-      </label>
-    </div>
-
     <div
       class="mb-2 mt-6 flex h-auto w-full flex-nowrap justify-center gap-x-4"
     >
       <div class="mr-auto flex h-auto w-full justify-start">
-        <button
+        <base-button
+          variant="form"
           type="submit"
-          class="inline-block flex-1 basis-1/2 rounded-lg bg-blue-900 p-3 text-xl font-bold text-light transition-colors hover:bg-white hover:text-blue-900"
+          @keydown.enter="handleAddMovie"
+          label="Create Movie"
+          class="flex-1 basis-1/2 bg-blue-900 text-light hover:bg-light hover:text-blue-900"
         >
-          Create
-        </button>
+          <template #default> Create </template>
+        </base-button>
       </div>
       <div class="ml-auto flex h-auto w-full justify-end">
-        <button
-          type="button"
+        <base-button
+          variant="form"
+          label="Cancel"
           @click="handleCancelForm"
           @keydown.enter="handleCancelForm"
-          class="inline-block flex-1 basis-1/2 rounded-lg bg-pink-800 p-3 text-xl font-bold text-light transition-colors hover:bg-light hover:text-pink-800"
+          class="flex-1 basis-1/2 bg-pink-800 text-light hover:bg-light hover:text-pink-800"
         >
-          Cancel
-        </button>
+          <template #default> Cancel </template>
+        </base-button>
       </div>
     </div>
-    <div class="my-3 flex flex-row items-center justify-center text-center">
+    <div class="my-4 flex flex-row items-center justify-center text-center">
       <p
         class="rounded-md bg-pink-900 p-2 text-xl font-bold text-light"
         v-if="isInvalidForm"
@@ -255,6 +320,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import BaseRating from '../components/BaseRating.vue';
+import BaseButton from '../components/BaseButton.vue';
 import { movieRegex } from '../../src/utils/constants.js';
 import movieShowData from '../../src/movieShowData.json';
 
@@ -319,13 +385,17 @@ const isUpdateMovieImageValid = computed(() => {
   );
 });
 
-const handleCancelForm = () => {
-  handleResetForm();
+const clearValidationErrors = () => {
+  isInvalidForm.value = false;
+};
+
+const handleCancelEditForm = () => {
+  clearValidationErrors();
   emit('cancel');
 };
 
 const handleResetForm = () => {
-  isInvalidForm.value = false;
+  clearValidationErrors();
   movie.value.name = '';
   movie.value.year = new Date().getFullYear();
   movie.value.description = '';
@@ -335,6 +405,11 @@ const handleResetForm = () => {
   movie.value.genres = [];
   movie.value.inTheaters = false;
   movie.value.trailer = '';
+};
+
+const handleCancelForm = () => {
+  handleResetForm();
+  emit('cancel');
 };
 
 const handleAddMovie = () => {

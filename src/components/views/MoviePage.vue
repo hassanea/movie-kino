@@ -24,11 +24,15 @@
         <div
           class="relative flex flex-grow basis-full flex-col items-center lg:basis-[30%]"
         >
-          <img
-            :src="movieImagePoster"
+          <IKImage
+            :urlEndpoint="imageSource"
+            :path="movieImagePoster"
             :alt="movie.name"
             class="rounded-xl object-cover"
+            :transformation="[{ format: 'avif' }, 'n-movie-image']"
+            loading="lazy"
           />
+
           <base-star :rating="movie.rating" variant="movie" />
         </div>
         <div
@@ -46,7 +50,7 @@
               v-for="movieGenre in movieGenres"
               :key="movieGenre"
               :genre="movieGenre"
-            ></base-movie-badge>
+            />
           </div>
           <p
             class="mx-0 mb-[1.25rem] text-pretty font-sans text-lg font-normal not-italic leading-loose md:mb-5 md:mt-3"
@@ -56,14 +60,17 @@
         </div>
       </div>
     </article>
-    <p v-else>Error occurred!</p>
+    <p class="error-msg" v-else>
+      Error occurred! - Failed to fetch Movie Data.
+    </p>
   </main>
 </template>
 
 <script setup>
-import { defineAsyncComponent, ref, computed, onMounted } from 'vue';
+import { defineAsyncComponent, ref, computed, watch } from 'vue';
 import { supabase } from '../../lib/supabaseClient.js';
 import { useRouter } from 'vue-router';
+import { IKImage } from 'imagekitio-vue';
 import { ArrowLeftIcon } from '@heroicons/vue/24/outline';
 import BaseButton from '../BaseButton.vue';
 import BaseMovieBadge from '../BaseMovieBadge.vue';
@@ -86,7 +93,6 @@ const BaseLoader = defineAsyncComponent(async () => {
 
 const movie = ref(null);
 const isLoading = ref(false);
-const error = ref({ error: '', hasError: false });
 
 const backToPrevPage = () => {
   router.go(-1);
@@ -98,24 +104,18 @@ const grabMovieData = async () => {
     .from('movies')
     .select()
     .eq('id', props.id);
-  const [movieData] = data;
-  if (!error) {
+  if (!error && data) {
+    const [movieData] = data;
     isLoading.value = false;
     movie.value = movieData;
     return movie;
   } else {
-    error.value.error = error;
-    error.value.hasError = true;
-    console.error(error);
+    isLoading.value = false;
   }
 };
 
-onMounted(() => {
-  grabMovieData();
-});
-
 const movieImagePoster = computed(() => {
-  return `${imageSource}${imagePath}${movie.value.image}`;
+  return `${imagePath}${movie.value.image}`;
 });
 
 const movieGenres = computed(() => {
@@ -123,10 +123,12 @@ const movieGenres = computed(() => {
 });
 
 const movieExists = computed(() => {
-  return !isLoading.value && movie.value && !error.value.hasError;
+  return !isLoading.value && movie.value;
 });
 
 const loadingData = computed(() => {
-  return isLoading.value && !movie.value && !error.value.hasError;
+  return isLoading.value && !movie.value;
 });
+
+watch(() => props.id, grabMovieData, { immediate: true });
 </script>

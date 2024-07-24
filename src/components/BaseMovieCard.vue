@@ -1,5 +1,4 @@
 <template>
-  <!-- px-5 pb-0  first:pt-6 last:pb-0 md:px-6 md:first:pt-0 md:last:pb-0 lg:mx-2 lg:my-3 lg:p-4 -->
   <article
     class="relative mb-0 mt-6 grid h-full grid-cols-1 px-5 text-center md:mt-3 md:px-4"
   >
@@ -32,7 +31,7 @@
       <p
         class="mb-2 font-serif text-xl font-bold italic leading-normal tracking-widest"
       >
-        {{ movie.year }}
+        <time class="ml-1 mr-1" :datetime="movie.year"> {{ movie.year }} </time>
         <span class="ml-1 mr-1 border-2 border-solid border-r-black"></span>
 
         <span class="m-3 font-serif text-xl font-bold italic leading-normal">
@@ -156,7 +155,7 @@ const props = defineProps({
 const { movie } = toRefs(props);
 
 const emit = defineEmits([
-  'addToWatchlist',
+  'addToWatchList',
   'editMovie',
   'deleteMovie',
   'showTrailer',

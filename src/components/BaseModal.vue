@@ -1,7 +1,7 @@
 <template>
   <div
+    class="fixed bottom-0 left-0 right-0 top-0 z-40 h-full w-full overflow-y-scroll bg-blue-1000/30"
     v-if="show"
-    class="fixed bottom-0 left-0 right-0 top-0 z-40 h-full w-full bg-blue-1000/30"
     @click.self="handleClose"
     @keydown.esc="handleClose"
   >
@@ -12,13 +12,14 @@
       :aria-describedby="a11yDesc"
       :tabindex="setModalTabIndex"
       ref="trapRef"
-      class="fixed left-[12%] top-[0%] z-50 h-auto min-w-[50%] max-w-[80%] rounded-xl bg-slate-200 p-8 md:left-[20%] md:top-[18%] lg:left-[25%] lg:top-[0] 2xl:top-[12%]"
+      class="absolute left-[12%] top-[0%] z-50 h-auto min-w-[50%] max-w-[80%] rounded-xl bg-slate-300 p-4 md:left-[25%] md:top-[10%] md:p-8 lg:left-[25%] lg:top-[0%] lg:p-4 xl:left-[25%] xl:top-[5%] xl:p-8 2xl:top-[12%]"
     >
       <base-button
         variant="close"
         label="Close"
         ref="closeBtn"
         @click="handleClose"
+        @keydown.enter="handleClose"
       >
         <XMarkIcon
           class="inline-block h-6 w-6 align-middle font-bold text-dark hover:stroke-pink-700 hover:stroke-[4px] active:stroke-pink-500 active:stroke-[4px]"
@@ -27,20 +28,20 @@
 
       <div v-if="title">
         <h2
-          class="my-4 line-clamp-3 text-center font-sans text-[1.625rem] font-medium leading-normal md:text-3xl"
+          class="my-2 line-clamp-3 text-center font-sans text-[1.625rem] font-medium leading-normal md:my-4 md:text-3xl"
           ref="mainTitle"
           :id="titleId"
         >
           {{ title }}
         </h2>
-        <div class="mx-auto mb-4 mt-0 block h-1 w-12 bg-dark text-center"></div>
+        <div
+          class="mx-auto mb-2 mt-0 block h-1 w-12 bg-dark text-center md:mb-4"
+        ></div>
         <p class="sr-only" v-if="describe" ref="mainDesc" :id="descId">
           {{ describe }}
         </p>
       </div>
-      <div
-        class="flex h-full w-full flex-col flex-nowrap items-center justify-center"
-      >
+      <div class="flex flex-col flex-nowrap items-center justify-center">
         <slot> </slot>
       </div>
     </div>

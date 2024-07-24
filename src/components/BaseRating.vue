@@ -1,5 +1,7 @@
 <template>
-  <div class="mx-auto mb-4 mt-7 flex h-auto w-full items-center justify-center">
+  <div
+    class="mx-auto mb-3 mt-3 flex h-auto w-full items-center justify-center md:mb-4 md:mt-7"
+  >
     <button
       type="button"
       class="mr-1 inline-block h-12 w-12 cursor-pointer border-none bg-transparent text-2xl last:mr-0 focus:rounded-3xl focus:border-4 focus:border-solid focus:border-blue-1000 focus:outline-none"
@@ -25,7 +27,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { StarIcon } from '@heroicons/vue/24/solid';
 
 const props = defineProps({
@@ -40,10 +42,13 @@ const emit = defineEmits(['update:modelValue']);
 
 const ratingRange = [1, 2, 3, 4, 5];
 
-const selectedRating = ref(0);
+const selectedRating = ref(props.modelValue);
 
 const handleRatingSelection = someRating => {
   selectedRating.value = someRating;
-  emit('update:modelValue', selectedRating.value);
 };
+
+watch(selectedRating, newRating => {
+  emit('update:modelValue', newRating);
+});
 </script>

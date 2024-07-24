@@ -3,18 +3,18 @@
     <transition name="fade">
       <base-modal
         :show="showTrailer"
-        :title="`${currentMovieTrailer?.name}'s Trailer`"
-        :describe="`Watch ${currentMovieTrailer?.name}'s Trailer`"
+        :title="`${currentMovie?.name}'s Trailer`"
+        :describe="`Watch ${currentMovie?.name}'s Trailer`"
         @close-modal="closeTrailerModal"
       >
         <template #default>
           <iframe
             @keydown.esc="handleCloseTrailerOnEscape"
             @dblclick="handleFullScreenMode"
-            :src="`${trailerSource}${currentMovieTrailer.trailer}`"
-            :title="`${currentMovieTrailer.name}'s Movie Trailer`"
+            :src="`${trailerSource}${currentMovie.trailer}`"
+            :title="`${currentMovie.name}'s Movie Trailer`"
             referrerpolicy="no-referrer"
-            class="mx-auto my-3 block aspect-video h-full w-[18.75rem] object-cover md:w-[37.5rem] lg:w-[50rem]"
+            class="mx-auto my-3 block aspect-video h-full w-full object-cover"
             allow="fullscreen"
             loading="lazy"
           ></iframe>
@@ -49,11 +49,11 @@
         @close-modal="closeEditMovieModal"
       >
         <template #default>
-            <base-movie-form
-              v-model="currentUpdateMovie"
-              @update:modelValue="handleUpdateMovie($event)"
-              @cancel="closeEditMovieModal"
-            ></base-movie-form>
+          <base-movie-form
+            v-model="currentMovie"
+            @update:modelValue="handleUpdateMovie($event)"
+            @cancel="closeEditMovieModal"
+          ></base-movie-form>
         </template>
       </base-modal>
     </transition>
@@ -84,10 +84,13 @@
             v-if="recommendedMovie"
             class="inline-block"
           >
-            <img
-              :src="recommendedMovieImageSource"
+            <IKImage
+              :urlEndpoint="imageSource"
+              :path="recommendedMovieImageSource"
               :alt="recommendedMovie.name"
-              class="rounded-lg shadow-sm h-auto w-auto hover:h-full hover:w-full hover:bg-dark/50 hover:before:absolute hover:before:content-none""
+              class="h-auto w-auto rounded-lg shadow-sm hover:h-full hover:w-full hover:bg-dark/50 hover:before:absolute hover:before:content-none"
+              :transformation="[{ format: 'avif' }, 'n-movie-image']"
+              loading="lazy"
             />
           </router-link>
         </template>
@@ -129,7 +132,21 @@
           {{ sortOption }}
         </option>
       </select>
-      <button type="button" @click="resetMovieSorting">Reset</button>
+      <base-button
+        variant="icon"
+        label="Reset sort filters"
+        v-tooltip.bottom="'Reset'"
+        @click="resetMovieSorting"
+        @keydown.enter="resetMovieSorting"
+      >
+        <template #default>
+          <img
+            src="../../../assets/undo.svg"
+            alt=""
+            class="inline-block h-6 w-6 align-middle"
+          />
+        </template>
+      </base-button>
     </div>
 
     <div
@@ -149,32 +166,30 @@
     <div
       class="mt-5 grid grid-cols-1 md:mt-7 md:grid-cols-2 lg:mt-10 xl:mt-8 xl:grid-cols-3"
     >
-
-      <base-loader v-if="loadingState" class="my-2 md:my-4"> </base-loader>
-      <template v-else-if="hasMovies">
-          <base-movie-card
-            v-for="movie in sortedMovies"
-            :key="movie.id"
-            :movie="movie"
-            @edit-movie="handleEditMovie(movie.id ?? currentId)"
-            @delete-movie="handleDeleteMovie(movie.id ?? currentId)"
-            @add-to-watchlist="addToWatchList(movie.id ?? currentId)"
-            @show-trailer="toggleMovieTrailerModal(movie.id ?? currentId)"
-            @update-rating="handleRatingUpdate"
-          ></base-movie-card>
-      </template>
-      <p  v-else-if="errorOccurred">
-          <strong>
-          <span class="mr-2">
-            <ExclamationCircleIcon class="h-6 w-6 text-gray-500" />
-          </span>
-          Error Occurred! | {{ error.error }}
-        </strong>
+      <base-loader v-if="loadingState" class="my-2 md:my-4" />
+      <p class="error-msg" v-else-if="errorOccurred">
+        Error Occurred! - {{ error }}
       </p>
-  
-      <p class="font-serif text-3xl font-bold text-light" v-else>
+
+      <p
+        class="mx-auto bg-blue-1000 text-center font-serif text-3xl font-bold text-light"
+        v-else-if="noDataState"
+      >
         No Movies Yet!
       </p>
+
+      <template v-else>
+        <base-movie-card
+          v-for="movie in sortedMovies"
+          :key="movie.id"
+          :movie="movie"
+          @edit-movie="handleEditMovie(movie.id ?? currentId)"
+          @delete-movie="handleDeleteMovie(movie.id ?? currentId)"
+          @add-to-watch-list="addToWatchList(movie.id ?? currentId)"
+          @show-trailer="toggleMovieTrailerModal(movie.id ?? currentId)"
+          @update-rating="handleRatingUpdate($event)"
+        />
+      </template>
     </div>
   </section>
 
@@ -202,9 +217,9 @@
 <script setup>
 import { defineAsyncComponent, ref, computed, onMounted, watch } from 'vue';
 import { supabase } from '../../lib/supabaseClient.js';
-
 import { useIdle } from '@vueuse/core';
-import { ExclamationCircleIcon, PlusIcon } from '@heroicons/vue/24/outline';
+import { PlusIcon } from '@heroicons/vue/24/outline';
+import { IKImage } from 'imagekitio-vue';
 import BaseMovieCard from '../../components/BaseMovieCard.vue';
 import BaseButton from '../BaseButton.vue';
 
@@ -223,7 +238,7 @@ const BaseMovieForm = defineAsyncComponent(async () => {
 const movies = ref([]);
 const selectedSortCriteria = ref('');
 const sortOrderOpt = ref('');
-const sortMovieOptions = ['name', 'year', 'filmRating', 'rating', 'inTheaters'];
+const sortMovieOptions = ['year', 'rating', 'inTheaters'];
 const sortOrder = ['asc', 'desc'];
 const showModal = ref(false);
 const showTrailer = ref(false);
@@ -231,38 +246,45 @@ const showTrailer = ref(false);
 const isUpdate = ref(false);
 const watchList = ref([]);
 const currentId = ref('');
-const currentUpdateMovie = ref(null);
+
+const watchListFromStorage = localStorage.getItem('watchList');
+if (watchListFromStorage) watchList.value = JSON.parse(watchListFromStorage);
+
+const currentMovie = ref(null);
 
 const isLoading = ref(false);
 
-const error = ref({ error: '', hasError: false });
+const error = ref('');
 
 const isStillThere = ref(false);
 
 const trailerSource = 'https://www.youtube.com/embed/';
-const currentMovieTrailer = ref();
 
 const imageSource = import.meta.env.VITE_APP_IMAGE_ENDPOINT;
 const imagePath = import.meta.env.VITE_APP_IMAGE_PATH;
 
-const { idle } = useIdle(10 * 60 * 1000);
+const { idle } = useIdle(5 * 60 * 1000);
 
 const handleError = err => {
-  error.value.error = err.message;
-  error.value.hasError = true;
+  error.value = err.message;
   isLoading.value = false;
-  console.error(err);
+};
+
+const handleWatchListToStorage = items => {
+  const sanitizedList = JSON.stringify(items);
+  localStorage.setItem('watchList', sanitizedList);
 };
 
 const getMovieData = async () => {
   isLoading.value = true;
-  error.value.hasError = false;
+  error.value = '';
   const { data: movieData, error: err } = await supabase
-    .from('movies')
-    .select(); // Literally, a SELECT query statement like so => SELECT * FROM movies;
+    .from('randommovies')
+    .select()
+    .limit(27); // Literally, a SELECT query statement like so => SELECT * FROM movies;
   if (!err) {
-    movies.value = movieData;
     isLoading.value = false;
+    movies.value = movieData;
     return movies;
   } else {
     handleError(err);
@@ -270,110 +292,108 @@ const getMovieData = async () => {
 };
 
 onMounted(() => {
- getMovieData();
+  getMovieData();
 });
 
 const loadingState = computed(() => {
-  return isLoading.value && !error.value.hasError && movies.value.length === 0;
-});
-
-const hasMovies = computed(() => {
-  return !isLoading.value && !error.value.hasError && movies.value.length > 0;
+  return isLoading.value && !error.value && movies.value.length === 0;
 });
 
 const errorOccurred = computed(() => {
-  return !isLoading.value && movies.value.length === 0 && error.value.hasError;
+  return !isLoading.value && error.value && movies.value.length === 0;
+});
+
+const noDataState = computed(() => {
+  return !isLoading.value && !error.value && movies.value.length === 0;
 });
 
 const handleCreateMovie = async movie => {
   movies.value.push(movie);
   try {
-    const { data, error } = await supabase // INSERT INTO movies (id, name, year, description, image, filmRating, rating, genres, inTheaters);
+    const { data, err } = await supabase // INSERT INTO movies (id, name, year, description, image, filmRating, rating, genres, inTheaters);
       .from('movies')
       .insert(movie)
       .select();
-      const [ createdMovie ] = data;
-    if (!error) {
-      console.log(data);
+    const [createdMovie] = data;
+    if (!err) {
       currentId.value = createdMovie.id;
       resetForm();
     } else {
-      handleError(error);
+      handleError(err);
     }
   } catch (error) {
-    console.error(error);
+    throw new Error(`Failed to create movie!: ${error}`);
   }
+};
+
+const findMovie = movieId => {
+  return movies.value.find(film => film.id === movieId);
+};
+
+const retrieveMovieIndex = movieId => {
+  return movies.value.findIndex(movie => movie.id === movieId);
 };
 
 const handleEditMovie = async movieId => {
   currentId.value = movieId;
   isUpdate.value = true;
-  const { data, error } = await supabase
+  const { data, err } = await supabase
     .from('movies')
     .select()
     .eq('id', movieId); // SELECT FROM movies WHERE id === movieId
-  if (!error) {
-    const [currentMovie] = data;
-    currentUpdateMovie.value = currentMovie;
+  if (!err) {
+    const [editedMovie] = data;
+    currentMovie.value = editedMovie;
   } else {
-    handleError(error);
+    handleError(err);
   }
 };
 
 const handleUpdateMovie = async movie => {
-  const currentMovie = movies.value.find(film => {
-    return film.id === currentId.value;
-  });
-  currentMovie.name = movie.name;
-  currentMovie.description = movie.description;
-  currentMovie.year = movie.year;
-  currentMovie.image = movie.image;
-  currentMovie.filmRating = movie.filmRating;
-  currentMovie.trailer = movie.trailer;
-  const { error } = await supabase
+  const updatedMovie = findMovie(currentId.value);
+  updatedMovie.name = movie.name;
+  updatedMovie.description = movie.description;
+  updatedMovie.year = movie.year;
+  updatedMovie.image = movie.image;
+  updatedMovie.filmRating = movie.filmRating;
+  updatedMovie.trailer = movie.trailer;
+  const { err } = await supabase
     .from('movies')
     .update(movie)
     .eq('id', currentId.value); // UPDATE 'movies' SET (id, name, description, ...) WHERE id === 'movieId';
-  if (!error) {
+  if (!err) {
     console.log(`Updated movie record #${currentId.value} successfully!`);
     closeEditMovieModal();
   } else {
-    handleError(error);
+    handleError(err);
   }
 };
 
 const handleDeleteMovie = async movieId => {
   // DELETE FROM 'movies' WHERE id = 'movieId';
   // eq() filter is basically saying === id where is equal to the current movie id.
-  const currentMovie = movies.value.findIndex(movie => {
-    return movie.id === movieId;
-  });
-  movies.value.splice(currentMovie, 1);
+  const currentMovieIndex = retrieveMovieIndex(movieId);
+  movies.value.splice(currentMovieIndex, 1);
   // DELETE FROM movies WHERE id === movieId
   try {
-  const { error } = await supabase.from('movies').delete().eq('id', movieId);
-  if (!error) {
-    console.log(`Movie record with ID of # ${movieId} deleted successfully!`);
-  } else {
-    handleError(error);
+    const { err } = await supabase.from('movies').delete().eq('id', movieId);
+    if (!err) {
+      console.log(`Movie record with ID of # ${movieId} deleted successfully!`);
+    } else {
+      handleError(err);
+    }
+  } catch (error) {
+    console.log(error);
   }
-} 
-catch(error) {
-  console.log(error);
-}
 };
 
 const addToWatchList = movieId => {
-  const currentMovie = movies.value.find(movie => {
-    return movie.id === movieId;
-  });
-  if (!watchList.value.includes(currentMovie)) {
-    watchList.value.push(currentMovie);
+  const movieToWatch = findMovie(movieId);
+  if (!watchList.value.includes(movieToWatch)) {
+    watchList.value.push(movieToWatch);
     console.log(watchList.value);
   } else {
-    const removeMovieFromWatch = watchList.value.findIndex(movie => {
-      return currentMovie.id === movie.id;
-    });
+    const removeMovieFromWatch = retrieveMovieIndex(movieToWatch);
     return watchList.value.splice(removeMovieFromWatch, 1);
   }
 };
@@ -395,14 +415,22 @@ const displayAddMovieModal = () => {
 
 const toggleMovieTrailerModal = movieId => {
   showTrailer.value = !showTrailer.value;
-  const currentTrailer = movies.value.find(movie => {
-    return movie.id === movieId;
-  });
-  currentMovieTrailer.value = currentTrailer;
+  const currentTrailer = findMovie(movieId);
+  currentMovie.value = currentTrailer;
 };
 
-const handleRatingUpdate = newRating => {
-  console.log(newRating);
+const handleRatingUpdate = async newRating => {
+  const currentRating = findMovie(newRating.id);
+  currentRating.rating = newRating.rating;
+  const { err } = await supabase
+    .from('movies')
+    .update(currentRating)
+    .eq('id', newRating.id);
+  if (!err) {
+    console.log(`Updated movie rating #${currentRating.id} successfully!`);
+  } else {
+    handleError(err);
+  }
 };
 
 const sortedMovies = computed(() => {
@@ -448,11 +476,11 @@ const recommendedMovie = computed(() => {
 });
 
 const recommendedMovieImageSource = computed(() => {
-  return `${imageSource}${imagePath}${recommendedMovie.image}`;
+  return `${imagePath}${recommendedMovie.value.image}`;
 });
 
 const recommendedMoviePath = computed(() => {
-  return `/movies/${recommendedMovie.id}`;
+  return `/movies/${recommendedMovie.value.id}`;
 });
 
 const averageMovieRating = computed(() => {
@@ -508,6 +536,13 @@ const closeEditMovieModal = () => {
   isUpdate.value = false;
 };
 
+watch(
+  watchList,
+  value => {
+    handleWatchListToStorage(value);
+  },
+  { immediate: true, deep: true },
+);
 watch(idle, () => {
   if (idle.value) {
     isStillThere.value = true;
@@ -527,14 +562,16 @@ watch(idle, () => {
 .fade-leave-active {
   transition:
     opacity,
-    filter 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    filter,
+    0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .fade-enter-from,
 .fade-leave-to {
   transition:
     opacity,
-    filter 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    filter,
+    0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   opacity: 0;
   filter: blur(10px);
 }

@@ -1,6 +1,6 @@
-import Home from '../src/components/views/Home.vue';
+import HomePage from '../src/components/views/HomePage.vue';
 const MovieListing = () => import('../src/components/views/MovieListing.vue');
-const Movie = () => import('../src/components/views/Movie.vue');
+const MoviePage = () => import('../src/components/views/MoviePage.vue');
 const NotFound = () => import('../src/components/views/NotFound.vue');
 import DefaultLayout from '../src/components/layouts/DefaultLayout.vue';
 
@@ -16,7 +16,7 @@ const routes = [
       {
         path: '',
         name: 'Home Content',
-        component: Home,
+        component: HomePage,
       },
     ],
   },
@@ -36,7 +36,7 @@ const routes = [
     path: '/movies/:id',
     name: 'Movie',
     props: true,
-    component: Movie,
+    component: MoviePage,
   },
   {
     path: '/:pathMatch(.*)*',
